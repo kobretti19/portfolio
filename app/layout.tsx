@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Oswald } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+//Fonts
+const MainFont = Bricolage_Grotesque({ subsets: ["latin"] });
+const OswaldFont = Oswald({
   subsets: ["latin"],
+  variable: "--font-oswald",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const PixelFont = localFont({
+  src: "../public/assets/fonts/pixel-font-7.ttf",
+  variable: "--font-pixel",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          MainFont.className,
+          OswaldFont.variable,
+          PixelFont.variable
+        )}
       >
         {children}
       </body>
