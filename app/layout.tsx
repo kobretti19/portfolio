@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Oswald } from "next/font/google";
-import "./globals.css";
 import localFont from "next/font/local";
+import "./globals.css";
 import { cn } from "@/lib/utils";
+import GrainEffect from "@/components/visualEffects/grain-effect";
+import { Cursor } from "@/components/cursor/cursor";
 
 //Fonts
 const MainFont = Bricolage_Grotesque({ subsets: ["latin"] });
@@ -16,6 +18,7 @@ const PixelFont = localFont({
   variable: "--font-pixel",
 });
 
+//Meta
 export const metadata: Metadata = {
   title: "PETROSKI MARTIN",
   description: "PETROSKI MARTIN official portfolio",
@@ -35,6 +38,8 @@ export default function RootLayout({
           PixelFont.variable
         )}
       >
+        <GrainEffect />
+        <Cursor color="#fff" />
         {children}
       </body>
     </html>
