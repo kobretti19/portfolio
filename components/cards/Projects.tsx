@@ -30,7 +30,13 @@ const projectsData = [
     date: "2024",
     title: "ReactJS",
     subTitle: "tic-tac-toe",
-    link: "https://reisttv.ch/",
+    link: "https://martin-tic-tac-toe.netlify.app/",
+  },
+  {
+    date: "2024",
+    title: "ReactJS",
+    subTitle: "tic-tac-toe",
+    link: "https://martin-tic-tac-toe.netlify.app/",
   },
   {
     date: "2024",
