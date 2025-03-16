@@ -1,4 +1,5 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
+// SwiperSlide
 // import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
