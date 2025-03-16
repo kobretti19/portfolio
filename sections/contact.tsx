@@ -45,19 +45,29 @@ export default function ContactSection() {
       <Card>
         <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
           {/* Contact Cards */}
+
           <div className="flex flex-col gap-8">
-            <ContactCard
-              title="Call us directly at"
-              icon={<FaPhoneVolume className="fill-[#333] text-lg" />}
-              text="+41 78 631 42 02"
-              btnText="Call Us"
-            />
-            <ContactCard
-              title="Chat with us"
-              icon={<MdEmail className="fill-[#333] text-lg" />}
-              text="martinpetroski@gmail.com"
-              btnText="Email Us"
-            />
+            <div onClick={() => (window.location.href = "tel:+41786314202")}>
+              <ContactCard
+                title="Call us directly at"
+                icon={<FaPhoneVolume className="fill-[#333] text-lg" />}
+                text="+41 78 631 42 02"
+                btnText="Call Us"
+              />
+            </div>
+
+            <div
+              onClick={() =>
+                (window.location.href = "mailto:martinpetroski@gmail.com")
+              }
+            >
+              <ContactCard
+                title="Chat with us"
+                icon={<MdEmail className="fill-[#333] text-lg" />}
+                text="martinpetroski@gmail.com"
+                btnText="Email Us"
+              />
+            </div>
           </div>
 
           {/* Contact Form */}
