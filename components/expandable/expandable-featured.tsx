@@ -14,7 +14,7 @@ const ExpandableFeatured = () => {
     setHoveredIndex(null);
   };
   return (
-    <div className="w-full grid lg:flex lg:justify-between lg:gap-x-4">
+    <div className="w-full grid lg:flex lg:justify-between lg:gap-x-4 gap-y-28">
       {featuredData.slice(1).map((featured, i) => (
         <div
           key={i}

@@ -49,7 +49,7 @@ export default function ContactSection() {
             <ContactCard
               title="Call us directly at"
               icon={<FaPhoneVolume className="fill-[#333] text-lg" />}
-              text="078 631 42 02"
+              text="+41 78 631 42 02"
               btnText="Call Us"
             />
             <ContactCard

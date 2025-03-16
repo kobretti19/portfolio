@@ -21,7 +21,7 @@ const ContactCard: FC<ContactCardProps> = ({ icon, btnText, text, title }) => {
         </div>
         {/* Body text*/}
         <div>
-          <h2 className="font-bold text-2xl">{text}</h2>
+          <h2 className="font-bold text-xl lg:text-2xl">{text}</h2>
         </div>
         <Button className="w-24">{btnText}</Button>
       </div>
