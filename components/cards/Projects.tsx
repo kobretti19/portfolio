@@ -24,7 +24,7 @@ const projectsData = [
     date: "2024",
     title: "Javascript",
     subTitle: "search Country",
-    link: "https://www.dynavox.ch/de/index.php",
+    link: "https://searchcountry-martin.netlify.app/",
   },
   {
     date: "2024",
