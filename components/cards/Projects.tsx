@@ -52,6 +52,6 @@ const projectsData = [
     date: "2025",
     title: "ReactJS and ExpressJS",
     subTitle: "MentorToken Project without backend",
-    link: "mentortokenmartin.netlify.app",
+    link: "https://mentortokenmartin.netlify.app",
   },
 ];
