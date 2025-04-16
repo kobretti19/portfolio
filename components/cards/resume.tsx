@@ -25,10 +25,12 @@ export default function ResumeCard() {
       <div className="flex items-center justify-between md:absolute md:bottom-6 md:left-6 md:w-[calc(100%-48px)]">
         {/* { Socials} */}
         <Socials />
-        <Button>
-          <FaDownload />
-          Resume
-        </Button>
+        <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+          <Button>
+            <FaDownload />
+            Resume
+          </Button>
+        </a>
       </div>
     </Card>
   );
