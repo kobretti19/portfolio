@@ -1,4 +1,4 @@
-import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Button from "./button";
 
 export default function Socials() {
@@ -22,6 +22,11 @@ const socials = [
   {
     icon: <FaInstagram className="w-5 h-5" />,
     link: "https://www.instagram.com/martin.petroski/",
+    username: "martin.petroski",
+  },
+  {
+    icon: <FaGithub className="w-5 h-5" />,
+    link: "https://github.com/kobretti19",
     username: "martin.petroski",
   },
 ];
