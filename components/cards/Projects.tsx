@@ -54,4 +54,10 @@ const projectsData = [
     subTitle: "MentorToken Project without backend",
     link: "https://mentortokenmartin.netlify.app",
   },
+  {
+    date: "2025",
+    title: "NextJS",
+    subTitle: "Meetups Project",
+    link: "https://meetups-three-mu.vercel.app/",
+  },
 ];
