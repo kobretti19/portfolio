@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { FC, ReactNode } from "react";
-import { FiArrowUpRight } from "react-icons/fi";
+import Link from 'next/link';
+import { FC, ReactNode } from 'react';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 //Timeline------------------------------------
 interface TimelineProps {
@@ -8,7 +8,7 @@ interface TimelineProps {
 }
 
 export const Timeline: FC<TimelineProps> = ({ children }) => {
-  return <div className="flex flex-col gap-y-6">{children}</div>;
+  return <div className='flex flex-col gap-y-6'>{children}</div>;
 };
 
 //TimeLine Item------------------------------
@@ -31,28 +31,28 @@ export const TimelineItem: FC<TimelineItemProps> = ({
   isCourse,
 }) => {
   return (
-    <div className="flex flex-wrap gap-12 min-h justify-start relative">
+    <div className='flex flex-wrap gap-12 min-h justify-start relative'>
       {/* { Date timeline} */}
       <div
-        className="h-auto flex-none break-words whitespace-pre"
-        style={{ width: `${isCourse ? "0" : ""}` }}
+        className='h-auto flex-none break-words whitespace-pre'
+        style={{ width: `${isCourse ? '0' : ''}` }}
       >
-        <p className="text-secondary-foreground">{date}</p>
+        <p className='text-secondary-foreground'>{date}</p>
       </div>
       {/* { Right side} */}
       <div
-        className="flex gap-x-2 "
-        style={{ transform: `${isCourse ? "translateY(-45px)" : ""}` }}
+        className='flex gap-x-2 '
+        style={{ transform: `${isCourse ? 'translateY(-45px)' : ''}` }}
       >
-        <div className="flex flex-col gap-0.5">
+        <div className='flex flex-col gap-0.5'>
           {/* { Title} */}
-          <div className="text-primary-foreground break-words whitespace-pre">
-            <p className="leading-6 font-medium text-sm">{title}</p>
+          <div className='text-primary-foreground break-words whitespace-pre'>
+            <p className='leading-6 font-medium text-sm'>{title}</p>
           </div>
           {/* { Subtitle} */}
-          <div className="flex items-center gap-2 w-auto">
+          <div className='flex items-center gap-2 w-auto hover:cursor-pointer'>
             {link ? (
-              <Link href={link} target="_blank">
+              <Link href={link} target='_blank'>
                 <Body link={link} subTitle={subTitle} tag={tag} />
               </Link>
             ) : (
@@ -75,12 +75,16 @@ interface BodyProps {
 
 const Body: FC<BodyProps> = ({ subTitle, tag, link }) => {
   return (
-    <div className="text-secondary-foreground flex items-center">
-      <p className="text-sm font-normal leading-6 mt-1">{subTitle}</p>
-      {link ? <FiArrowUpRight className="cursor-pointer" /> : null}
+    <div className='text-secondary-foreground flex items-center'>
+      <p className='text-sm font-normal leading-6 mt-1 hover:cursor-pointer'>
+        {subTitle}
+      </p>
+      {link ? (
+        <FiArrowUpRight className='cursor-pointer hover:cursor-pointer' />
+      ) : null}
       {tag ? (
-        <div className="ms-2 rounded-[20px] bg-white/5 py-0.5 px-1.5">
-          <p className="text-[10px] font-normal text-secondary-foreground">
+        <div className='ms-2 rounded-[20px] bg-white/5 py-0.5 px-1.5'>
+          <p className='text-[10px] font-normal text-secondary-foreground'>
             {tag}
           </p>
         </div>
