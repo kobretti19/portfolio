@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-no-undef */
-import FancyButton from "@/components/ui/fancy-button";
-import Profile from "@/components/ui/profile";
-import MagneticWrapper from "@/components/visualEffects/magnetic-wrapper";
-import { FaArrowRight } from "react-icons/fa";
-import FullScreenMenu from "./full-screen-menu/full-screen-menu";
-import { useEffect, useState } from "react";
-import ToggleButton from "./full-screen-menu/toggle-button";
+import FancyButton from '@/components/ui/fancy-button';
+import Profile from '@/components/ui/profile';
+import MagneticWrapper from '@/components/visualEffects/magnetic-wrapper';
+import { FaArrowRight } from 'react-icons/fa';
+import FullScreenMenu from './full-screen-menu/full-screen-menu';
+import { useEffect, useState } from 'react';
+import ToggleButton from './full-screen-menu/toggle-button';
 
 const Header = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -19,18 +19,18 @@ const Header = () => {
         setShowToggle(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
   return (
-    <div className="w-full flex items-center justify-center md:justify-between">
+    <div className='w-full flex items-center justify-center md:justify-between'>
       <Profile />
-      <div className="hidden md:inline">
+      <div className='hidden md:inline'>
         <MagneticWrapper>
-          <FancyButton text="Let`s talk" icon={<FaArrowRight />} />
+          <FancyButton text='Let`s talk' icon={<FaArrowRight />} />
         </MagneticWrapper>
       </div>
       {/* { Toggle button} */}
@@ -38,7 +38,7 @@ const Header = () => {
 
       {/* { Full screan menu} */}
 
-      {open && <FullScreenMenu />}
+      {open && <FullScreenMenu onClose={() => setOpen(false)} />}
     </div>
   );
 };

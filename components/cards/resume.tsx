@@ -9,13 +9,15 @@ export default function ResumeCard() {
   return (
     <Card className='md:h-full'>
       <p className='text-lg xl:text-2xl font-medium text-primary-foreground '>
-        As a dedicated repairman and technician with a specialization in home
-        audio systems, I am currently advancing my programming skills at the
-        Javascript Programming Academy in Semos Macedonia. With two years of
-        focused learning in web technologies like HTML, CSS, JavaScript,
-        Node.js, and React, I&apos;ve successfully built several comprehensive
-        web applications. I am eager to contribute my creativity, collaboration,
-        and technical expertise to your team.🚀🚍
+        As a dedicated repairman and technician specializing in home audio
+        systems, I recently completed a 1-year JavaScript Web Application
+        Developer Academy at Semos Macedonia, gaining hands-on experience with
+        HTML, CSS, JavaScript, Node.js, and React. Since September, I’ve
+        expanded my skills with courses in Transact-SQL, Excel BI with Power
+        Query & DAX, Analyzing Data with Excel, and PL-300: Power BI analytics,
+        strengthening my development and data expertise. I’m eager to bring my
+        creativity, technical skills, and collaborative mindset to projects that
+        make an impact. 🚀🚀🚍
       </p>
       {/* { Signature} */}
       <div>
