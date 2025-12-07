@@ -13,20 +13,20 @@ interface FeaturedCardProps {
 }
 
 const FeaturedCard: FC<FeaturedCardProps> = ({ title, tag, images }) => {
-  const validImages = images?.filter((src) => !!src) || [
+  const validImages = images?.filter(Boolean) || [
     '/assets/images/placeholder.jpg',
   ];
 
   return (
-    <div className='link w-full h-full bg-secondary-background border border-border shadow-lg rounded-3xl p-2 flex flex-col gap-2'>
+    <div className='w-full h-full bg-secondary-background border border-border shadow-lg rounded-3xl flex flex-col overflow-hidden'>
       <Header title={title} tag={tag} />
 
-      <div className='relative flex p-4 w-full items-center justify-center h-[550px] border border-border rounded-3xl overflow-hidden'>
+      <div className='relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px]'>
         <Swiper
           modules={[Pagination, Autoplay]}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}
-          className='rounded-2xl w-full h-full'
+          className='w-full h-full'
         >
           {validImages.map((src, idx) => (
             <SwiperSlide key={idx}>
