@@ -1,24 +1,24 @@
-import FeaturedCard from "@/components/cards/featured/featured-card";
-import ExpandableFeatured from "@/components/expandable/expandable-featured";
-import Heading from "@/components/heading/heading";
+// import FeaturedCard from '@/components/cards/featured/featured-card';
+import ExpandableFeatured from '@/components/expandable/expandable-featured';
+import Heading from '@/components/heading/heading';
 
-import { featuredData } from "@/data";
+// import { featuredData } from '@/data';
 
-const MainFeatured = featuredData[0];
+// const MainFeatured = featuredData[0];
 
 const FeaturedSection = () => {
   return (
-    <div className="pt-24 px-3 lg:px-8">
+    <div className='pt-24 px-3 lg:px-8'>
       {/* { Heading} */}
-      <Heading number="01" title_1="Featured" title_2="Work" />
+      <Heading number='01' title_1='Finished' title_2='Work' />
       {/* { Main featured card} */}
-      <FeaturedCard
+      {/* <FeaturedCard
         active
         title={MainFeatured.title}
         tag={MainFeatured.tag}
         video={MainFeatured.video}
-      />
-      <div className="mt-24">
+      /> */}
+      <div className='mt-24'>
         <ExpandableFeatured />
       </div>
     </div>

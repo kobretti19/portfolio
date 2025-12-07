@@ -28,7 +28,12 @@ const Header = () => {
   return (
     <div className='w-full flex items-center justify-center md:justify-between'>
       <Profile />
-      <div className='hidden md:inline'>
+      <div
+        onClick={() => {
+          window.location.href = 'tel:+41786314202';
+        }}
+        className='hidden md:inline'
+      >
         <MagneticWrapper>
           <FancyButton text='Let`s talk' icon={<FaArrowRight />} />
         </MagneticWrapper>
@@ -38,7 +43,7 @@ const Header = () => {
 
       {/* { Full screan menu} */}
 
-      {open && <FullScreenMenu onClose={() => setOpen(false)} />}
+      {open && <FullScreenMenu />}
     </div>
   );
 };

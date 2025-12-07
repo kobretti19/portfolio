@@ -1,24 +1,44 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import Header from './header';
-import Video from './video';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 interface FeaturedCardProps {
-  logo?: ReactNode;
   title: string;
   tag: string;
-  video: string;
-  active: boolean;
+  images: string[];
 }
 
-const FeaturedCard: FC<FeaturedCardProps> = ({ title, tag, video, active }) => {
+const FeaturedCard: FC<FeaturedCardProps> = ({ title, tag, images }) => {
+  const validImages = images?.filter((src) => !!src) || [
+    '/assets/images/placeholder.jpg',
+  ];
+
   return (
-    <div className='link w-full h-full bg-secondary-background border border-border shadow-lg rounded-3xl cursor-pointer flex flex-col gap-2 flex-nowrap p-2'>
-      {/* { Header} */}
+    <div className='link w-full h-full bg-secondary-background border border-border shadow-lg rounded-3xl p-2 flex flex-col gap-2'>
       <Header title={title} tag={tag} />
-      {/* {Body } */}
-      <div className='relative flex flex-none flex-nowrap p-6 w-full items-center justify-center h-[550px] border border-border rounded-3xl'>
-        {/* {Video } */}
-        <Video video={video} active={active} />
+
+      <div className='relative flex p-4 w-full items-center justify-center h-[550px] border border-border rounded-3xl overflow-hidden'>
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000 }}
+          className='rounded-2xl w-full h-full'
+        >
+          {validImages.map((src, idx) => (
+            <SwiperSlide key={idx}>
+              <Image
+                src={src}
+                alt={`${title}-${idx}`}
+                fill
+                className='object-cover rounded-2xl'
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

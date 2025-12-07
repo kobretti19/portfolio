@@ -37,4 +37,30 @@ const featuredData = [
   },
 ];
 
+export const projectFinishedGalleryImages = [
+  {
+    id: 3,
+    title: 'React - Tic Tac Toe Game',
+    tag: 'September 2025',
+    images: ['/assets/images/react/tic_tac_toe.jpg'],
+  },
+  {
+    id: 1,
+    title: 'PowerBI - Adventure Works Dashboard',
+    tag: 'November 2025',
+    images: [
+      '/assets/images/adventureWorks/Exec.jpg',
+      '/assets/images/adventureWorks/Customer_Detail.jpg',
+      '/assets/images/adventureWorks/Details.jpg',
+      '/assets/images/adventureWorks/Map.jpg',
+    ],
+  },
+  {
+    id: 2,
+    title: 'PowerBI - TopLine Performance',
+    tag: 'December 2025',
+    images: ['/assets/images/MavenMarket/TopLine_Performance.jpg'],
+  },
+];
+
 export default featuredData;
