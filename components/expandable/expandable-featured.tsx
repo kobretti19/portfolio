@@ -68,32 +68,54 @@ const ExpandableFeatured = () => {
           className='fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4'
           onClick={closeModal}
         >
-          <div className='relative'>
+          <div className='relative max-w-full max-h-full'>
             <img
               src={modalImages[currentImageIndex]}
               alt={`Image ${currentImageIndex + 1}`}
-              className='max-h-[80vh] max-w-[90vw] rounded-lg shadow-xl'
+              className='max-h-[80vh] max-w-[90vw] sm:max-h-[60vh] sm:max-w-[80vw] object-contain rounded-lg shadow-xl'
             />
+
+            {/* Title overlay */}
+            {activeIndex !== null && (
+              <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 text-white px-4 py-2 rounded-md text-center'>
+                <h3 className='font-semibold'>
+                  {projectFinishedGalleryImages[activeIndex].title}
+                </h3>
+                {projectFinishedGalleryImages[activeIndex].tag && (
+                  <p className='text-sm'>
+                    {projectFinishedGalleryImages[activeIndex].tag}
+                  </p>
+                )}
+              </div>
+            )}
+
             {/* Navigation arrows */}
             {modalImages.length > 1 && (
               <>
                 <button
-                  onClick={prevImage}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage(e);
+                  }}
                   className='absolute top-1/2 left-2 transform -translate-y-1/2 text-white text-3xl font-bold px-3 py-1 bg-black bg-opacity-50 rounded-full'
                 >
                   ‹
                 </button>
                 <button
-                  onClick={nextImage}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage(e);
+                  }}
                   className='absolute top-1/2 right-2 transform -translate-y-1/2 text-white text-3xl font-bold px-3 py-1 bg-black bg-opacity-50 rounded-full'
                 >
                   ›
                 </button>
               </>
             )}
+
             {/* Image counter */}
             {modalImages.length > 1 && (
-              <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white text-sm'>
+              <div className='absolute top-2 right-2 text-white text-sm'>
                 {currentImageIndex + 1} / {modalImages.length}
               </div>
             )}
