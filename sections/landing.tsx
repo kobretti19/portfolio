@@ -7,7 +7,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const LandingSection = () => {
   return (
-    <div className="relative h-screen overflow-hidden p-8">
+    <div id="home" className="relative h-screen overflow-hidden p-8">
       {/* Header  */}
       <Header />
 

@@ -10,25 +10,37 @@ import Heading from '@/components/heading/heading';
 
 const AboutSection = () => {
   return (
-    <div className='pt-24 px-3 lg:px-8' id='about'>
+    <div className='pt-24 px-3 lg:px-8 scroll-mt-8' id='about'>
       <Heading number='02' title_1='About' title_2='Me' />
       <div className='space-y-4 py-8'>
         <div className='space-y-4 md:grid md:grid-cols-2 md:gap-4 md:space-y-0 2xl:grid-cols-3'>
           {/* { Me card} */}
           <MeCard />
           <ResumeCard />
-          <BackgroundCard />
+          <div id='background' className='scroll-mt-8'>
+            <BackgroundCard />
+          </div>
         </div>
 
         <div className='space-y-4 md:grid md:grid-cols-2 md:gap-4 md:space-y-0 2xl:grid-cols-3'>
           <div className='space-y-4'>
-            <ProjectsCard />
-            <CertificationsCard />
+            <div id='projects' className='scroll-mt-8'>
+              <ProjectsCard />
+            </div>
+            <div id='certifications' className='scroll-mt-8'>
+              <CertificationsCard />
+            </div>
           </div>
           <div className='space-y-4'>
-            <StackCard />
-            <ExperienceCard />
-            <EducationCard />
+            <div id='stack' className='scroll-mt-8'>
+              <StackCard />
+            </div>
+            <div id='experience' className='scroll-mt-8'>
+              <ExperienceCard />
+            </div>
+            <div id='education' className='scroll-mt-8'>
+              <EducationCard />
+            </div>
           </div>
           <div className='hidden 2xl:flex'>{/* <Gallery /> */}</div>
         </div>

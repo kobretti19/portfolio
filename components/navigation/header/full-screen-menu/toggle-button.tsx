@@ -6,14 +6,15 @@ export default function ToggleButton({
   setOpen,
 }: {
   open: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setOpen: any;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <button
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      onClick={() => setOpen((prev: any) => !prev)}
-      className="fixed right-4 inset-auto top-4 m-5 z-50 w-20 h-20 rounded-full bg-[#323E56] cursor-pointer"
+      type="button"
+      aria-label={open ? "Close menu" : "Open menu"}
+      aria-expanded={open}
+      onClick={() => setOpen((prev) => !prev)}
+      className="fixed right-4 inset-auto top-4 m-5 z-50 w-20 h-20 rounded-full bg-[#323E56] cursor-pointer transition-transform duration-300 hover:scale-105"
     >
       <div className="relative flex items-center justify-center">
         <div className="flex flex-col gap-y-2 w-[30px]  transform transition-all duration-300 origin-center overflow-hidden">

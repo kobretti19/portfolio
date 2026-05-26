@@ -16,16 +16,17 @@ const NavLink: FC<NavLinkProps> = ({ data, onClick }) => {
   const [hovered, setHovered] = useState(false);
 
   const handleClick = () => {
-    // hide the menu
-    onClick?.();
-
-    // smooth scroll to section
-    if (href.startsWith('#')) {
-      const section = document.querySelector(href);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    // smooth scroll to the target section first (while it's still mounted)
+    if (href === '#home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (href.startsWith('#')) {
+      document
+        .querySelector(href)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // then hide the menu
+    onClick?.();
   };
 
   return (

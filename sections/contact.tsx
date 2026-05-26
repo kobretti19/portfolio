@@ -40,7 +40,7 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="pt-24 px-3 lg:px-8">
+    <div id="contact" className="pt-24 px-3 lg:px-8 scroll-mt-8">
       <Heading number="03" title_1="Contact" title_2="Me" />
       <Card>
         <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">

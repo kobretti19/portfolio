@@ -6,7 +6,7 @@ import NavLink from './nav-link';
 import Link from 'next/link';
 import MenuCard from './menu-card';
 
-export default function FullScreenMenu() {
+export default function FullScreenMenu({ close }: { close: () => void }) {
   return (
     <motion.div
       variants={menuSlide}
@@ -29,11 +29,15 @@ export default function FullScreenMenu() {
         >
           <div className='pl-4 flex flex-col justify-end'>
             {navItems.map((item, index) => (
-              <NavLink key={index} data={{ ...item, index }} />
+              <NavLink
+                key={index}
+                data={{ ...item, index }}
+                onClick={close}
+              />
             ))}
           </div>
           {/*Menu about card*/}
-          <MenuCard />
+          <MenuCard close={close} />
         </div>
       </div>
       {/*Footer links*/}
@@ -68,22 +72,22 @@ export default function FullScreenMenu() {
 const navItems = [
   {
     title: 'Home',
-    href: '/',
+    href: '#home',
   },
   {
     title: 'Featured',
-    href: '/#featured',
+    href: '#featured',
   },
   {
     title: 'About',
-    href: '/#about',
+    href: '#about',
   },
   {
     title: 'Projects',
-    href: '/#projects',
+    href: '#projects',
   },
   {
     title: 'Contact',
-    href: '/#contact',
+    href: '#contact',
   },
 ];
