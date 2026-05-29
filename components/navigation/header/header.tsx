@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 'use client';
 
 import FancyButton from '@/components/ui/fancy-button';

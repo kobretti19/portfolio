@@ -42,7 +42,6 @@ const AboutSection = () => {
               <EducationCard />
             </div>
           </div>
-          <div className='hidden 2xl:flex'>{/* <Gallery /> */}</div>
         </div>
       </div>
     </div>

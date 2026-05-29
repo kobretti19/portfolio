@@ -11,16 +11,20 @@ import { MdEmail, MdSubject } from "react-icons/md";
 import { SiMinutemailer } from "react-icons/si";
 import emailjs from "@emailjs/browser";
 
+type FormStatus = "idle" | "sending" | "success" | "error";
+
 export default function ContactSection() {
   const formRef = useRef<HTMLFormElement>(null!);
-  const btnRef = useRef<HTMLButtonElement>(null);
   const [services, setServices] = useState<string[]>([]);
   const [budgets, setBudgets] = useState<string[]>([]);
-
-  console.log(budgets, "budgets");
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const sendEmail = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+
     emailjs
       .sendForm(
         "service_4qb42if",
@@ -28,15 +32,16 @@ export default function ContactSection() {
         formRef.current,
         "CoUydTUxW_5vOF378"
       )
-      .then(
-        (res) => {
-          console.log(res.text);
-          console.log("Email sent successfully");
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+      .then(() => {
+        setStatus("success");
+        formRef.current.reset();
+        setServices([]);
+        setBudgets([]);
+      })
+      .catch((error) => {
+        setStatus("error");
+        setErrorMessage(error.text || "Something went wrong. Please try again.");
+      });
   };
 
   return (
@@ -82,12 +87,14 @@ export default function ContactSection() {
                 type="text"
                 placeholder="Full Name"
                 icon={<FaUser />}
+                required
               />
               <Input
                 name="email"
                 type="email"
                 placeholder="Email Address"
                 icon={<MdEmail />}
+                required
               />
             </div>
             <div className="flex items-center justify-between mb-4 gap-8">
@@ -96,6 +103,7 @@ export default function ContactSection() {
                 type="text"
                 placeholder="Subject"
                 icon={<MdSubject />}
+                required
               />
             </div>
 
@@ -139,17 +147,36 @@ export default function ContactSection() {
               name="message"
               placeholder="Tell us about your project"
               icon={<FaProjectDiagram />}
+              required
             />
 
-            <div className="w-full flex justify-end">
-              <div onClick={() => btnRef.current?.click()}>
-                <Button className="!w-44 !py-3 !text-xl">
-                  Send <SiMinutemailer />
-                </Button>
-              </div>
+            <div className="w-full flex flex-col items-end gap-4">
+              {status === "success" && (
+                <p className="text-green-benzol text-sm font-medium">
+                  Message sent successfully!
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-pink-ice text-sm font-medium">
+                  {errorMessage}
+                </p>
+              )}
+              <Button
+                type="submit"
+                className="!w-44 !py-3 !text-xl"
+                disabled={status === "sending"}
+              >
+                {status === "sending" ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    Send <SiMinutemailer />
+                  </>
+                )}
+              </Button>
 
               {/* Hidden Inputs for Form Submission */}
-              <div className="hidden">
+              <div className="hidden" aria-hidden="true">
                 <input
                   type="text"
                   value={services.join(", ")}
@@ -163,8 +190,6 @@ export default function ContactSection() {
                   readOnly
                 />
               </div>
-
-              <button ref={btnRef} hidden type="submit"></button>
             </div>
           </form>
         </div>

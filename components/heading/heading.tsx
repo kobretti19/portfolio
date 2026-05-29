@@ -12,7 +12,7 @@ const Heading: FC<HeadingProps> = ({ number, title_1, title_2 }) => {
   return (
     <div className="relative my-10 px-8 z-20">
       {/* {Number } */}
-      <div className="uotline-none flex flex-col justify-start shrink-0 opacity-5 transform -top-32 2xl:-top-24 w-[71px] flex-none h-auto left-4 lg:left-12 absolute whitespace-pre">
+      <div className="flex flex-col justify-start shrink-0 opacity-5 transform -top-32 2xl:-top-24 w-[71px] flex-none h-auto left-4 lg:left-12 absolute whitespace-pre">
         <h2 className="font-pixel text-[180px] text-center text-primary-foreground relative">
           <span className="bottom-fade bg-clip-text text-transparent p-4">
             {number}

@@ -1,11 +1,11 @@
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
 export default function SvgCurve() {
   const path = useRef<SVGPathElement | null>(null);
   const reqId = useRef<number | null>(null);
-  const xRef = useRef(0.5); // Use ref for x
-  const [progress, setProgress] = useState(0);
-  let time = Math.PI / 2;
+  const progress = useRef(0);
+  const xRef = useRef(0.5);
+  const time = useRef(Math.PI / 2);
 
   const setPath = useCallback((value: number) => {
     const width = window.innerWidth * 0.7;
@@ -16,56 +16,57 @@ export default function SvgCurve() {
     );
   }, []);
 
-  const animateIn = () => {
+  const animateOut = useCallback(() => {
+    const prevProgress = progress.current;
+    const newProgress = prevProgress * Math.sin(time.current);
+    setPath(newProgress);
+    const nextProgress = prevProgress + (0 - prevProgress) * 0.04;
+    time.current += 0.2;
+    progress.current = nextProgress;
+
+    if (Math.abs(nextProgress) > 0.5) {
+      reqId.current = requestAnimationFrame(animateOut);
+    } else {
+      progress.current = 0;
+      time.current = Math.PI / 2;
+      setPath(0);
+    }
+  }, [setPath]);
+
+  const animateIn = useCallback(() => {
     if (reqId.current !== null) {
       cancelAnimationFrame(reqId.current);
-      time = Math.PI / 2;
     }
-    setPath(progress);
-    reqId.current = requestAnimationFrame(animateIn);
-  };
+    time.current = Math.PI / 2;
+    reqId.current = requestAnimationFrame(function tick() {
+      setPath(progress.current);
+      reqId.current = requestAnimationFrame(tick);
+    });
+  }, [setPath]);
 
-  const manageMouseMove = (e: React.MouseEvent) => {
-    const { movementY } = e;
-    const box = (e.target as HTMLElement).getBoundingClientRect();
-    xRef.current = (e.clientX - box.left) / box.width;
-    setProgress((prev) => prev + movementY); // Update progress with state
-  };
-
-  const resetAnimation = () => {
+  const resetAnimation = useCallback(() => {
     if (reqId.current !== null) {
       cancelAnimationFrame(reqId.current);
     }
     animateOut();
-  };
+  }, [animateOut]);
 
-  const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a;
-
-  const animateOut = () => {
-    setProgress((prevProgress) => {
-      const newProgress = prevProgress * Math.sin(time);
-      setPath(newProgress);
-      const nextProgress = lerp(prevProgress, 0, 0.04);
-      time += 0.2;
-
-      if (Math.abs(nextProgress) > 0.5) {
-        reqId.current = requestAnimationFrame(animateOut);
-      } else {
-        time = Math.PI / 2;
-        return 0;
-      }
-      return nextProgress;
-    });
-  };
+  const manageMouseMove = useCallback((e: React.MouseEvent) => {
+    const { movementY } = e;
+    const box = (e.target as HTMLElement).getBoundingClientRect();
+    xRef.current = (e.clientX - box.left) / box.width;
+    progress.current += movementY;
+  }, []);
 
   const handleResize = useCallback(() => {
-    setPath(progress);
-  }, [progress, setPath]);
+    setPath(progress.current);
+  }, [setPath]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
+      if (reqId.current !== null) cancelAnimationFrame(reqId.current);
     };
   }, [handleResize]);
 
@@ -76,9 +77,9 @@ export default function SvgCurve() {
         onMouseLeave={resetAnimation}
         onMouseMove={manageMouseMove}
         className="box"
-      ></span>
+      />
       <svg>
-        <path ref={path}></path>
+        <path ref={path} />
       </svg>
     </div>
   );

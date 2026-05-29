@@ -59,7 +59,7 @@ export const HeadingAnimatedSvg: FC<HeadingAnimatedSvg> = ({
             <textPath
               href="#curve-wnxkz4"
               startOffset={0}
-              dominantBaseline="Central"
+              dominantBaseline="central"
               style={{
                 fontSize: "14.5px",
                 fontFamily: "Figtree",

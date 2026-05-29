@@ -3,7 +3,7 @@ import { Timeline, TimelineItem } from '../ui/timeline';
 
 export default function EducationCard() {
   return (
-    <Card title='education'>
+    <Card title='Education'>
       <Timeline>
         {educationData.map((ex, i) => (
           <TimelineItem

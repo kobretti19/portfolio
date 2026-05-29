@@ -1,32 +1,39 @@
 import { FC, useEffect, useState } from "react";
-import moment from "moment-timezone";
 
 interface LiveClockProps {
   timeZone: string;
 }
+
+const formatter = (tz: string) =>
+  new Intl.DateTimeFormat("de-CH", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: tz,
+    hour12: false,
+  });
 
 const LiveClock: FC<LiveClockProps> = ({ timeZone }) => {
   const [time, setTime] = useState<string>("");
 
   useEffect(() => {
     const updateClock = () => {
-      const currentTime = moment().tz(timeZone).format("HH:mm");
-      setTime(currentTime);
+      setTime(formatter(timeZone).format(new Date()));
     };
+    updateClock();
     const intervalId = setInterval(updateClock, 1000);
-
-    //Cleanup interval on component unmount
     return () => clearInterval(intervalId);
   }, [timeZone]);
 
+  const city = timeZone.split("/")[1];
+
   return (
-    <div className=" text-3xl text-secondary-foreground font-semibold">
+    <div className="text-3xl text-secondary-foreground font-semibold" aria-live="polite" aria-label="Current time">
       {time ? (
         <div className="flex items-center justify-center gap-[0.5vw]">
-          <span>{timeZone.split("/")[1]}</span>,<span>{time}</span>
+          <span>{city}</span>,<span>{time}</span>
         </div>
       ) : (
-        <div>loading...</div>
+        <div aria-hidden="true">&nbsp;</div>
       )}
     </div>
   );

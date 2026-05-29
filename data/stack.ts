@@ -26,7 +26,7 @@ export const stackData = [
       },
       {
         id: 2,
-        title: "Javasctript",
+        title: "Javascript",
         image: JSImg,
         bgColor: "",
       },
@@ -36,7 +36,7 @@ export const stackData = [
     title: "Styling / FWs",
     stack: [
       {
-        id: 4,
+        id: 3,
         title: "Tailwind css",
         image: TailwindImg,
         bgColor: "",
@@ -78,7 +78,7 @@ export const stackData = [
     ],
   },
   {
-    title: "Monorepos",
+    title: "Databases",
     stack: [
       {
         id: 9,

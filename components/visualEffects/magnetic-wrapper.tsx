@@ -11,7 +11,7 @@ const MagneticWrapper: FC<MagneticWrapperProps> = ({ children, className }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const { x, y } = position;
-  const handleMouse = (e: MouseEvent) => {
+  const handleMouse = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
     const boundingReact = ref?.current?.getBoundingClientRect();
     if (boundingReact) {
